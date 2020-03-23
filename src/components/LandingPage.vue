@@ -1,0 +1,134 @@
+<template>
+<div>
+  <main>
+    <div class="lapor-landing-page-navbar">
+        <div class="lapor-landing-page-navbar-container">
+            <router-link to="/" class="lapor-landing-page-title lapor-red-font">
+              PORTLUV
+            </router-link>
+            <router-link to="/signup" class="lapor-landing-page-button lapor-red-font">
+              Sign Up
+            </router-link>
+        </div>
+    </div>
+  </main>
+    <div class="lapor-landing-page-background">
+        <div class="lapor-landing-page-background-desc">
+            <h1>SAVE YOUR LIFE PROGRESS</h1>
+            <span>
+                <b>Keeping your achievements safe, while making you a profile to show off!</b> 
+                <br />
+                Upload your work, and see you progress through the times.
+                Register now for a free account.
+            </span>
+            <router-link to="/signup" class="lapor-landing-page-signup-button">Sign Up</router-link>
+        </div>
+        <router-link to="/" class="lapor-landing-page-title" id="laporLandingTitle">PORTLUV</router-link>
+        <div class="slide-img"></div>
+    </div>
+    <h1 id="whatIs" class="lapor-landing-page-large-title">
+        <span>
+            WHAT IS PORTLUV?
+        </span>
+    </h1>
+    <div class="lapor-landing-page-large-desc">
+        Our goal is to make creative professionals have the coolest portfolio collection and to find these professionals equally cool jobs on our platform.
+        PORTLUV is a website dedicated for these creative professionals, people who are willing to give their all. We keep their portfolio's safe whilst giving these professionals a profile worth showing. 
+    </div>  
+    <h1 id="howTo" class="lapor-landing-page-large-title">
+        <span>
+            A SIMPLE GUIDE
+        </span>
+    </h1>
+    <div class="lapor-landing-page-large-desc lapor-landing-page-card-container">
+        <div class="lapor-how-to-card">
+            <h4 style="text-align: center; margin-top: 12px; font-size: 14pt;">Register</h4>
+            <div style="text-align: center; margin-top: 20px; margin-bottom: 40px;">
+                <i class="fas fa-pencil-alt fa-7x"></i>
+            </div>
+            <hr>
+            <span style="display: block; margin-top: 20px;">
+                Before you use our app, please register to get access to our features
+            </span>
+        </div>
+        <div class="lapor-how-to-card">
+            <h4 style="text-align: center; margin-top: 12px; font-size: 14pt;">Upload Work</h4>
+            <div style="text-align: center; margin-top: 20px; margin-bottom: 40px;">
+                <i class="fas fa-file-upload fa-7x"></i>
+            </div>
+            <hr>
+            <span style="display: block; margin-top: 20px;">
+                Upload all of your best work in your Create page, and watch the magic happen!
+            </span>
+        </div>
+        <div class="lapor-how-to-card">
+            <h4 style="text-align: center; margin-top: 12px; font-size: 14pt;">Customize</h4>
+            <div style="text-align: center; margin-top: 20px; margin-bottom: 40px;">
+                <i class="fas fa-paint-brush fa-7x"></i>
+            </div>
+            <hr>
+            <span style="display: block; margin-top: 20px;">
+                After uploading your portfolio, add some little touches to your profile to make it more you!
+            </span>
+        </div>
+    </div>
+    <footer class="lapor-landing-page-footer">
+        <div class="lapor-landing-page-footer-desc">
+            <span>
+                Create something awesome today!
+            </span>
+            <router-link to="/signup" class="lapor-landing-page-signup-button lapor-landing-page-footer-signup-button">Sign Up</router-link>
+        </div>
+        <span>
+            Have a problem?
+            Send an Email : portluv@gmail.com
+        </span>
+        <span class="lapor-landing-page-footer-title">PORTLUV - Copyright 2019</span>
+    </footer>
+</div>
+</template>
+
+<script>
+import $ from 'jquery';
+export default {
+  name: 'LandingPage',
+  mounted: function(){
+    $(document).ready(function(){
+        setTimeout(function(){
+            $('.lapor-landing-page-background-desc').fadeIn('slow');  
+        }, 500);
+        var bindEvent = true;
+        reachedWhatIs();
+        function reachedTop(){
+            $(document).bind('scroll', function() {
+                if($(this).scrollTop()<$('#whatIs').position().top && bindEvent === false){
+                    reachedWhatIs();
+                    bindEvent = true;
+                    $('.lapor-landing-page-navbar').css("transform", "translateY(-48px)");
+                }
+            });
+        }
+        function reachedWhatIs(){
+            $(document).bind('scroll', function() {
+                if($(this).scrollTop()>=$('#whatIs').position().top && bindEvent === true){
+                    $(document).unbind();
+                    bindEvent = false;
+                    $('.lapor-landing-page-navbar').css("transform", "translateY(0px)");
+                    reachedTop();
+                }
+            });
+        }
+    });
+  }
+}
+</script>
+
+<style scoped>
+.lapor-navbar{
+  position: fixed;
+  transform: translateY(-42px);
+}
+span.lapor-landing-page-title.lapor-alt-navbar-title{
+  display: none;
+}
+</style>
