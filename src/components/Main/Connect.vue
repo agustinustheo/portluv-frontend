@@ -48,7 +48,6 @@ export default {
         }
 
         var userBox = document.getElementsByClassName('lapor-userbox');
-        var userBoxHeight = [];
         var userBoxDefaultHeight = [];
         var userBoxInnerContainer = []
         var userBoxDefaultInnerContainer = []
@@ -58,28 +57,29 @@ export default {
         }
         var innerContainerStyle;
         
-        function setUserBoxHeight(){
-            for(let j = 0; j < userBox.length; j++){
-                userBoxHeight[j] = 0;
-                for(let i = 0; i < userBoxInnerContainer[j].length; i++){
-                    userBoxHeight[j] += userBoxInnerContainer[j][i].clientHeight;
-                    if(i > 0){
-                        innerContainerStyle = userBoxInnerContainer[j][i].currentStyle || window.getComputedStyle(userBoxInnerContainer[j][i]);
-                        userBoxHeight[j] += parseInt(
-                            innerContainerStyle.marginTop.substr(0, 
-                                innerContainerStyle.marginTop.lastIndexOf("px")
-                            )
-                        );
-                        userBoxHeight[j] += parseInt(
-                            innerContainerStyle.marginBottom.substr(0, 
-                                innerContainerStyle.marginBottom.lastIndexOf("px")
-                            )
-                        );
-                    }
-                }
-                userBox[j].style.height = userBoxHeight[j].toString() + "px";
-            }
-        }
+        // var userBoxHeight = [];
+        // function setUserBoxHeight(){
+        //     for(let j = 0; j < userBox.length; j++){
+        //         userBoxHeight[j] = 0;
+        //         for(let i = 0; i < userBoxInnerContainer[j].length; i++){
+        //             userBoxHeight[j] += userBoxInnerContainer[j][i].clientHeight;
+        //             if(i > 0){
+        //                 innerContainerStyle = userBoxInnerContainer[j][i].currentStyle || window.getComputedStyle(userBoxInnerContainer[j][i]);
+        //                 userBoxHeight[j] += parseInt(
+        //                     innerContainerStyle.marginTop.substr(0, 
+        //                         innerContainerStyle.marginTop.lastIndexOf("px")
+        //                     )
+        //                 );
+        //                 userBoxHeight[j] += parseInt(
+        //                     innerContainerStyle.marginBottom.substr(0, 
+        //                         innerContainerStyle.marginBottom.lastIndexOf("px")
+        //                     )
+        //                 );
+        //             }
+        //         }
+        //         userBox[j].style.height = userBoxHeight[j].toString() + "px";
+        //     }
+        // }
 
         function setUserBoxDefaultHeight(){
             for(let j = 0; j < userBox.length; j++){
